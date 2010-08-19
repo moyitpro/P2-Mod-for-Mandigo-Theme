@@ -31,7 +31,7 @@
 	if ($wpmu) {
 		$current_site = get_current_site();
 ?>
-		<?php _e('Powered by <a href="http://mu.wordpress.org/">WordPress MU</a>', 'mandigo'); ?> &amp; hosted by <a href="http://<?php echo $current_site->domain . $current_site->path ?>"><?php echo $current_site->site_name ?></a><br />
+		<?php _e('Powered by <a href="http://wordpress.org/">WordPress 3.0</a>', 'mandigo'); ?> &amp; hosted by <a href="http://<?php echo $current_site->domain . $current_site->path ?>"><?php echo $current_site->site_name ?></a><br />
 		<a href="http://<?php echo $current_site->domain . $current_site->path ?>wp-signup.php">Create a new blog</a> and join in the fun! <a href="http://www.onehertz.com/portfolio/wordpress/" target="_blank" title="WordPress MU themes">Mandigo theme</a> by tom. P2 Intergration by <a href="http://chikorita157.com">chikorita157</a>.
 
 <?php
