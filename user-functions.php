@@ -2,8 +2,8 @@
 
 define( 'P2_INC_PATH',  get_template_directory() . '/inc' );
 define( 'P2_INC_URL', get_bloginfo('template_directory' ).'/inc' );
-define( 'P2_JS_PATH',  get_template_directory() . '/js' );
-define( 'P2_JS_URL', get_bloginfo('template_directory' ).'/js' );
+define( 'P2_JS_PATH',  get_template_directory() . '/p2js' );
+define( 'P2_JS_URL', get_bloginfo('template_directory' ).'/p2js' );
 
 if( !class_exists('Services_JSON') ) require_once( P2_INC_PATH . '/JSON.php' );
 require_once( P2_INC_PATH . '/compat.php' );
@@ -17,19 +17,6 @@ require_once( P2_INC_PATH . '/widgets/recent-comments.php' );
 $content_width = '632';
 
 if( function_exists('register_sidebar') ) {
-	register_sidebar( );
-	register_sidebar(
-		array(
-    		'name' => 'Top Sidebar',
-    		'id' => 'sidebar-top'
-			) 
-		);
-	register_sidebar(
-		array(
-    		'name' => 'Bottom Sidebar',
-    		'id' => 'sidebar-bottom'
-			) 
-		);
 }
 
 // Content Filters
@@ -434,18 +421,6 @@ add_filter('get_the_tags', 'hilite_tags');
 add_filter('the_excerpt', 'hilite');
 add_filter('comment_text', 'hilite');
 
-function iphone_css() {
-if ( strstr( $_SERVER['HTTP_USER_AGENT'], 'iPhone' ) or isset($_GET['iphone']) && $_GET['iphone'] ) { ?>
-<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-<style type="text/css">
-/* <![CDATA[ */
-/* iPhone CSS */
-<?php $iphonecss = dirname( __FILE__ ) . '/style-iphone.css'; if( is_file( $iphonecss ) ) require $iphonecss; ?>
-/* ]]> */
-</style>
-<?php } }
-add_action('wp_head', 'iphone_css');
-
 /*
 	Modified to replace query string with blog url in output string
 */
@@ -503,151 +478,4 @@ function prologue_poweredby_link() {
 if ( defined('IS_WPCOM') && IS_WPCOM ) {
     add_filter( 'prologue_poweredby_link', returner('<a href="http://wordpress.com/" rel="generator">'.__('Blog at WordPress.com', 'p2').'.</a>') );
 }
-
-/* Custom Header Code */
-define('HEADER_TEXTCOLOR', '3478E3');
-define('HEADER_IMAGE', ''); // %s is theme dir uri
-define('HEADER_IMAGE_WIDTH', 980);
-define('HEADER_IMAGE_HEIGHT', 120);
-
-function p2_admin_header_style() {
 ?>
-	<style type="text/css">
-	#headimg {
-		background: url(<?php header_image() ?>) repeat;
-		height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-		width:<?php echo HEADER_IMAGE_WIDTH; ?>px;
-		padding:0 0 0 18px;
-	}
-	#headimg a {
-		height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-		width:<?php echo HEADER_IMAGE_WIDTH; ?>px;
-	}
-
-	#headimg h1{
-		padding-top:40px;
-		margin: 0;
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-		font-weight: 200;
-	}
-	#headimg h1 a {
-		color:#<?php header_textcolor() ?>;
-		text-decoration: none;
-		border-bottom: none;
-		font-size: 1.4em;
-		margin: -0.4em 0 0 0;
-	}
-	#headimg #desc{
-		color:#<?php header_textcolor() ?>;
-		font-size:1.1em;
-		margin-top:1em;
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-		font-weight: 200;
-	}
-
-	<?php if ( 'blank' == get_header_textcolor() ) { ?>
-	#headimg h1, #headimg #desc {
-		display: none;
-	}
-	#headimg h1 a, #headimg #desc {
-		color:#<?php echo HEADER_TEXTCOLOR ?>;
-	}
-	<?php } ?>
-
-	</style>
-<?php
-}
-
-function p2_header_style() {
-?>
-	<style type="text/css">
-		<?php if ( '' != get_header_image() ) : ?>
-		#header {
-			background: url(<?php header_image() ?>) repeat;
-			height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-		}
-		#header a.secondary {
-			height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-			width:<?php echo HEADER_IMAGE_WIDTH; ?>px;
-			display: block;
-			position: absolute;
-			top: 0;
-		}
-		#header a.secondary:hover {
-			border: 0;
-		}
-		#header .sleeve {
-			position: relative;
-			margin-top: 0;
-			margin-right: 0;
-			background-color: transparent;
-			box-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-		}
-		#header {
-			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) !important;
-			-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) !important;
-			-moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) !important;
-		}
-		<?php endif; ?>
-		<?php if ( 'blank' == get_header_textcolor() ) { ?>
-		#header h1, #header small {
-			padding: 0;
-			text-indent: -1000em;
-		}
-		<?php } else { ?>
-		#header h1 a, #header small {
-			color: #<?php header_textcolor() ?>;
-		}
-		<?php } ?>
-	</style>
-<?php
-}
-add_custom_image_header( 'p2_header_style', 'p2_admin_header_style' );
-
-function p2_background_color() {
-	$background_color = get_option( 'p2_background_color' );
-
-	if ( '' != $background_color ) :
-	?>
-	<style type="text/css">
-		body {
-			background-color: <?php esc_attr_e( $background_color ); ?>;
-		}
-	</style>
-	<?php endif;
-}
-add_action( 'wp_head', 'p2_background_color' );
-
-function p2_background_image() {
-	$p2_background_image = get_option( 'p2_background_image' );
-
-	if ( 'none' == $p2_background_image || '' == $p2_background_image )
-		return false;
-
-?>
-	<style type="text/css">
-		body {
-			background-image: url( <?php echo get_template_directory_uri() . '/i/backgrounds/pattern-' . $p2_background_image . '.png' ?> );
-		}
-	</style>
-<?php
-}
-add_action( 'wp_head', 'p2_background_image' );
-
-function p2_hidden_sidebar_css() {
-	$hide_sidebar = get_option( 'p2_hide_sidebar' );
-  	$sleeve_margin = 'rtl' == get_bloginfo( 'text_direction' ) ? 'margin-left: 0;' : 'margin-right: 0;';
-	if ( '' != $hide_sidebar ) :
-	?>
-	<style type="text/css">
-		.sleeve_main { <?php echo $sleeve_margin;?> }
-		#wrapper { background: transparent; }
-		#header, #footer, #wrapper { width: 760px; }
-	</style>
-	<?php endif;
-}
-add_action( 'wp_head', 'p2_hidden_sidebar_css' );
-

@@ -218,6 +218,9 @@ h2 img {
 	border-style: solid;
 	border-width: 1px;
 	display: block;
+	width: auto !important; 
+	max-width: 480px !important; 
+	height: auto !important;
 }
 	.discussion p img {
 		display: inline !important;
