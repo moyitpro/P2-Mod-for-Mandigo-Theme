@@ -74,7 +74,7 @@ class P2_Recent_Comments extends WP_Widget {
 		
 		echo $before_widget . $before_title . esc_html( $title ) . $after_title;
 ?>
-		<table class='p2-recent-comments' cellspacing='0' cellpadding='0' border='0' avatar="<?php echo esc_attr($avatar_size); ?>">
+		<table class='p2-recent-comments' style='padding: 0; border-collapse: collapse;'>
 		<?php foreach( $recent_comments as $comment ):
 			echo $this->single_comment_html( $comment, $avatar_size );
 		endforeach;

@@ -13,7 +13,7 @@
 			
 			<?php while ( have_posts() ) : the_post() ?>
 			
-				<div class="controls">
+				<div class="singlecontrols">
 					<a href="#" id="togglecomments"><?php _e( 'Hide threads', 'p2' ); ?></a>
 					&nbsp;|&nbsp;
 					<a href="#directions" id="directions-keyboard"><?php  _e( 'Keyboard Shortcuts', 'p2' ); ?></a>

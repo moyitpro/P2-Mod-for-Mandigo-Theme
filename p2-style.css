@@ -48,6 +48,9 @@ Description: A group blog theme for short update messages, inspired by Twitter. 
 	right: 0;
 	position: absolute;
 }
+#main .singlecontrols {
+	right: 0;
+}
 .sleeve_main {
 	width: auto;
 }
@@ -77,12 +80,11 @@ Description: A group blog theme for short update messages, inspired by Twitter. 
 	display: block;
 }
 #postbox textarea#posttext {
-	width: 97.6%;
+	width: 99.5% !important;
 	margin-bottom: 6px;
 	border: solid;
 	border-width: 1px;
 	font-size: 13px;
-	padding: 5px 7px;
 	height: 60px;
 }
 #wrapper form input[type="text"] {
@@ -122,7 +124,7 @@ form#new_post {
 	margin: 0 1px -2px;
 }
 #postbox input#posttitle, #postbox input#postcitation {
-	width: 97.6%;
+	width: 99.5%;
 	margin-bottom: 5px;
 }
 .disabled, .disabled:hover {
@@ -165,6 +167,9 @@ h2 {
 	right: 0;
 }
 .single #main .controls {
+position: static;
+}
+.single #main .singlecontrols {
 position: static;
 }
 #main .transparent_title {
@@ -222,6 +227,8 @@ h2 img {
 	border-style: solid;
 	border-width: 1px;
 	display: block;
+}
+.postcontent p img {
 	width: auto !important; 
 	max-width: 480px !important; 
 	height: auto !important;
@@ -832,8 +839,13 @@ div.entry {
 #postbox .avatar img {
 	border-color: #ccc;
 }
+#postbox input[type="text"] {
+	border:  1px solid;
+	border-color: #d1d1d1;
+	color: #666;
+}
 #postbox textarea#posttext {
-	background: #fafafa;
+    padding-top: 0px !important;
 	border-color: #d1d1d1;
 	color: #666;
 }
@@ -1020,7 +1032,15 @@ li.newupdates, li.newcomment {
 	font-weight: normal;
 	font-size: 1.6em;
 }
+#postbox input[type="text"] {
+	font-size: 13px;
+}
 #main .controls {
+	font-size: 12px;
+	text-align: right;
+	line-height: 3em;
+}
+#main .singlecontrols {
 	font-size: 12px;
 	text-align: right;
 	line-height: 3em;
@@ -1044,7 +1064,7 @@ li.newupdates, li.newcomment {
 	font-weight: normal;
 }
 #main p, #main ul, #main ol {
-	font-size: 1em;
+	font-size: .95em;
 	line-height: 1.4em;
 }
 #respond #cancel-comment-reply-link {
@@ -1152,5 +1172,5 @@ form.textedit textarea {
 }
 
 div.possibly-related {
-clear:left;
+	clear:left;
 }
