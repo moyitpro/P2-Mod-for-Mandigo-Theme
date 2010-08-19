@@ -44,6 +44,10 @@ Description: A group blog theme for short update messages, inspired by Twitter. 
 #main button {
 	margin: 10px 10px 0px 0;
 }
+#main .controls {
+	right: 0;
+	position: absolute;
+}
 .sleeve_main {
 	width: auto;
 }
@@ -245,7 +249,6 @@ h2 img {
 #main ul.commentlist img.avatar {
 	margin-right: 12px;
 }
-
 #main ul#postlist .postcontent ul, #main ul#postlist .postcontent ol, 
 #main ul#postlist .commentlist .commentcontent ul, #main ul#postlist .commentlist .commentcontent ol {
 	border: none;
