@@ -41,14 +41,14 @@ Description: A group blog theme for short update messages, inspired by Twitter. 
 	height: 28px;
 	padding: 0 10px;
 }
-#main button {
+#p2main button {
 	margin: 10px 10px 0px 0;
 }
-#main .controls {
+#p2main .controls {
 	right: 0;
 	position: absolute;
 }
-#main .singlecontrols {
+#p2main .singlecontrols {
 	right: 0;
 }
 .sleeve_main {
@@ -56,7 +56,7 @@ Description: A group blog theme for short update messages, inspired by Twitter. 
 }
 #postbox {
 	position: relative;
-	padding: 16px 15px 16px 14px;
+	padding: 16px 10px 16px 0px;
 	margin-right: 1px;
 }
 #postbox .avatar {
@@ -137,7 +137,7 @@ form#new_post {
 input#comment-submit {
 	clear: both;
 }
-#main ul#postlist {
+#p2main ul#postlist {
 	list-style: none;
 	margin-top: 16px;
 	margin-left: 0;
@@ -145,34 +145,34 @@ input#comment-submit {
 h2 {
 	position: relative;
 }
-#main {
-	padding-left: 14px;
-	padding-right: 14px;
+#p2main {
+	padding-left: 2px;
+	padding-right: 10px;
 	padding-bottom: 10px;
 	position: relative;
 }
-.single #main {
+.single #p2main {
 	padding-top: 18px;
 }
-#main .wp-smiley {
+#p2main .wp-smiley {
 	border: none;
 }
 
-#main h2 {
+#p2main h2 {
 	padding-top: 10px;
 	padding-bottom: 5px;
 	line-height: 1.1em;
 }
-#main .controls {
+#p2main .controls {
 	right: 0;
 }
-.single #main .controls {
+.single #p2main .controls {
 position: static;
 }
-.single #main .singlecontrols {
+.single #p2main .singlecontrols {
 position: static;
 }
-#main .transparent_title {
+#p2main .transparent_title {
 	text-indent: -1000em;
 	height: 0;
 	line-height: 0;
@@ -180,32 +180,32 @@ position: static;
 	padding: 0;
 	margin: 0;
 }
-#main .post h2 {
+#p2main .post h2 {
 	margin: 0 0 15px;
 }
-#main img.avatar {
+#p2main img.avatar {
 	float: left;
 	margin-right: 10px;
 	border: solid;
 	border-width: 1px;
 	margin-top: 0;
 }
-#main ul#postlist li {
+#p2main ul#postlist li {
 	overflow: visible;
 	border-top-style: solid;
 	border-top-width: 1px;
 	padding: 14px 0 0;
 }
-#main ul#postlist ul.commentlist li {
+#p2main ul#postlist ul.commentlist li {
 	border-top-style: solid;
 	border-top-width: 1px;
 	display: block;
 }
 
-#main h4 {
+#p2main h4 {
 	position: relative;
 }
-#main .actions {
+#p2main .actions {
 	position: absolute;
 	right: 2px;
 	top: 0;
@@ -221,7 +221,7 @@ h2 img {
 	vertical-align: middle;
 	margin-right: 12px;
 }
-#main p img {
+#p2main p img {
 	vertical-align: top;
 	padding: 2px;
 	border-style: solid;
@@ -237,27 +237,28 @@ h2 img {
 		display: inline !important;
 	}
 
-#main p {
+#p2main p {
 	margin: .7em 0;
 }
 
-#main ul, #main ol {
+#p2main ul, #p2main ol {
 	margin-left: 18px;
 }
-#main ul.commentlist {
+#p2main ul.commentlist {
 	list-style: none;
 	margin-left: 58px;
 	border-top: 0;
 	margin-top: 0;
 }
-#main ul.commentlist li {
+#p2main ul.commentlist li {
 	list-style: none;
 }
-#main ul.commentlist img.avatar {
+#p2main ul.commentlist img.avatar {
+	margin-left: 4px;
 	margin-right: 12px;
 }
-#main ul#postlist .postcontent ul, #main ul#postlist .postcontent ol, 
-#main ul#postlist .commentlist .commentcontent ul, #main ul#postlist .commentlist .commentcontent ol {
+#p2main ul#postlist .postcontent ul, #p2main ul#postlist .postcontent ol, 
+#p2main ul#postlist .commentlist .commentcontent ul, #p2main ul#postlist .commentlist .commentcontent ol {
 	border: none;
 	border-width: none;
 	border-style: none;
@@ -272,30 +273,30 @@ h2 img {
 	margin-top: 0 !important;
 	margin-bottom: 0 !important;
 }
-#main ul#postlist .postcontent li, #main ul#postlist .commentlist .commentcontent li {
+#p2main ul#postlist .postcontent li, #p2main ul#postlist .commentlist .commentcontent li {
 	border: none;
 	border-width: none;
 	border-style: none;
 	border-top-style: none;
 	border-top-width: none;
 }
-#main ul#postlist .postcontent ul li,
-#main ul#postlist .commentlist .commentcontent ul li {
+#p2main ul#postlist .postcontent ul li,
+#p2main ul#postlist .commentlist .commentcontent ul li {
 	list-style: disc;
 	display: list-item;
 	padding-top: 0;
 }
-#main ul#postlist .postcontent ol li,
-#main ul#postlist .commentlist .commentcontent ol li {
+#p2main ul#postlist .postcontent ol li,
+#p2main ul#postlist .commentlist .commentcontent ol li {
 	list-style: decimal;
 	display: list-item;
 	padding-top: 0;
 }
 
-#main form {
+#p2main form {
 	margin-top: 10px;
 }
-#main input {
+#p2main input {
 	margin: 4px 0;
 }
 #postpage #respond {
@@ -303,7 +304,7 @@ h2 img {
 	margin-bottom: 20px;
 	margin-left: 72px;
 }
-#main #respond, .textedit {
+#p2main #respond, .textedit {
 	padding: 14px 16px 12px;
 	margin-bottom: 10px;
 	margin-left: 64px;
@@ -315,10 +316,10 @@ h2 img {
 .textedit {
 	margin-left: 0;
 }
-#main .commentlist #respond.replying {
+#p2main .commentlist #respond.replying {
 	margin-left: 44px;
 }
-#main .commentlist li #respond.replying {
+#p2main .commentlist li #respond.replying {
 	margin-left: 93px;
 }
 #respond textarea, .textedit textarea {
@@ -347,6 +348,7 @@ h2 img {
 }
 .commentcontent {
 	overflow: auto;
+	margin-right:  4px;
 }
 .commentlist {
 	margin-bottom: 5px;
@@ -369,7 +371,6 @@ h2 img {
 	float: right;
 	background: url(i/feed.png) bottom left no-repeat;
 	padding-left: 14px;
-	padding-top: 4px;
 }
 .allrss {
 	background: url(i/feed.png) center left no-repeat;
@@ -457,22 +458,22 @@ h2 a.rss:hover {
 	display: block;
 	text-align: center;
 }
-#main ul#postlist, #main .post ul {
+#p2main ul#postlist, #p2main .post ul {
 	list-style: none;
 	margin-top: 0px;
 }
-#main ul#postlist ul, #main .post ul {
+#p2main ul#postlist ul, #p2main .post ul {
 	list-style: disc;
 }
-#main ul#postlist ul ul, #main ul#postlist ol ul, #main .post ul ul, #main .post ol ul {
+#p2main ul#postlist ul ul, #p2main ul#postlist ol ul, #p2main .post ul ul, #p2main .post ol ul {
 	margin-top: 0;
 }
-#main ol, #main .post ol {
+#p2main ol, #p2main .post ol {
 	margin-top: 16px;
 	margin-left: 18px;
 	list-style: decimal;
 }
-#main ol ol, #main .post ol ol {
+#p2main ol ol, #p2main .post ol ol {
 	margin-top: 0;
 }
 img.wp-smiley {
@@ -690,12 +691,12 @@ li.newupdates, li.newcomment {
 .page .postcontent {
 padding-left: 0;
 }
-#postpage #main ul#postlist, #postpage #main ul#postlist li {
+#postpage #p2main ul#postlist, #postpage #p2main ul#postlist li {
 	border-width: 0;
 	margin-top: 0;
 	padding-top: 0;
 }
-#postpage #main ul#postlist li ul li {
+#postpage #p2main ul#postlist li ul li {
 	border-width: 1px 0 0;
 	margin-top: 0;
 	padding-top: 14px;
@@ -737,7 +738,7 @@ div.entry {
 	margin-bottom: 4px;
 }
 #post-types {
-	margin-left: 60px;
+	margin-left: 34px;
 	margin-bottom: 10px;
 }
 #post-types li {
@@ -817,13 +818,13 @@ div.entry {
 	border-bottom-color: #f0f0f0;
 }
 
-#main img.avatar {
+#p2main img.avatar {
 	border-color: #ccc;
 }
-#main #postlist li {
+#p2main #postlist li {
 	border-top-color: #bbb;
 }
-#main #postlist .commentlist li {
+#p2main #postlist .commentlist li {
 	border-top-color: #ddd;
 }
 #header .sleeve {
@@ -880,9 +881,9 @@ div.entry {
 	background: #ddd !important;
 	border-color: #ccc;
 }
-#main .actions, #main .actions a, #main .actions a:link, #main .actions a:visited, #main .actions a:hover, #main .actions a:active,
-#main .keyselected .actions, #main .keyselected .actions a, #main .keyselected .actions a:link, #main .keyselected .actions a:visited, #main .keyselected .actions a:hover, #main .keyselected .actions a:active,
-#main .selected ul li .actions, #main .selected ul li .actions a, #main .selected ul li .actions a:link, #main .selected ul li .actions a:visited, #main .selected ul li .actions a:hover, #main .selected ul li .actions a:active {
+#p2main .actions, #p2main .actions a, #p2main .actions a:link, #p2main .actions a:visited, #p2main .actions a:hover, #p2main .actions a:active,
+#p2main .keyselected .actions, #p2main .keyselected .actions a, #p2main .keyselected .actions a:link, #p2main .keyselected .actions a:visited, #p2main .keyselected .actions a:hover, #p2main .keyselected .actions a:active,
+#p2main .selected ul li .actions, #p2main .selected ul li .actions a, #p2main .selected ul li .actions a:link, #p2main .selected ul li .actions a:visited, #p2main .selected ul li .actions a:hover, #p2main .selected ul li .actions a:active {
 	color: #ccc;
 }
 #media-buttons {
@@ -891,19 +892,19 @@ div.entry {
 .postcontent {
 	color: #555;
 }
-#main p img {
+#p2main p img {
 	border-color: #eee;
 }
-#main p, #main ul, #main ol {
+#p2main p, #p2main ul, #p2main ol {
 	color: #555;
 }
-#main #respond, .textedit {
+#p2main #respond, .textedit {
 	background: #f1f1f1;
 }
 #respond textarea, .textedit textarea {
 	border-color: #ccc;
 }
-#main span.meta {
+#p2main span.meta {
 	color: #888;
 }
 .sleeve_main {
@@ -988,7 +989,7 @@ li.newupdates, li.newcomment {
 	background: transparent;
 }
 
-#main {
+#p2main {
 	background: #fff;
 }
 
@@ -1012,7 +1013,7 @@ li.newupdates, li.newcomment {
 .category-quote blockquote cite:before {
 	content: "— ";
 }
-#main {
+#p2main {
 	font-size: 1.3em;
 }
 #postbox {
@@ -1035,24 +1036,24 @@ li.newupdates, li.newcomment {
 #postbox input[type="text"] {
 	font-size: 13px;
 }
-#main .controls {
+#p2main .controls {
 	font-size: 12px;
 	text-align: right;
 	line-height: 3em;
 }
-#main .singlecontrols {
+#p2main .singlecontrols {
 	font-size: 12px;
 	text-align: right;
 	line-height: 3em;
 }
-#main h4 {
+#p2main h4 {
 	font-size: 1em;
 	line-height: 1.2em;
 }
-#main h4 a {
+#p2main h4 a {
 	font-weight: bold;
 }
-#main h4 span a {
+#p2main h4 span a {
 	font-weight: normal;
 }
 .postcontent h4 {
@@ -1063,7 +1064,7 @@ li.newupdates, li.newcomment {
 	font-size: 1.5em;
 	font-weight: normal;
 }
-#main p, #main ul, #main ol {
+#p2main p, #p2main ul, #p2main ol {
 	font-size: .95em;
 	line-height: 1.4em;
 }
@@ -1077,13 +1078,13 @@ li.newupdates, li.newcomment {
 #respond textarea, .textedit textarea {
 	font-size: 12px;
 }
-#main span.meta {
+#p2main span.meta {
 	font-size: 0.85em;
 }
-#main .meta em {
+#p2main .meta em {
 	font-style: normal;
 }
-#main p.meta {
+#p2main p.meta {
 	font-size: 1em;
 }
 #sidebar h2 {
