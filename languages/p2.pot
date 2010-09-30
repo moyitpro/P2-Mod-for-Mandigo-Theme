@@ -1,14 +1,14 @@
-# Translation of the WordPress theme P2 1.1.5
-# Copyright (C) 2010 Joseph Scott, Matt Thomas, Noel Jackson, and Automattic
+# Translation of the WordPress theme P2 1.1.6.1 by Automattic.
+# Copyright (C) 2010 Automattic
 # This file is distributed under the same license as the P2 package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: P2 1.1.5\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tags/p2\n"
-"POT-Creation-Date: 2010-03-04 09:39-0700\n"
+"Project-Id-Version: P2 1.1.6.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/p2\n"
+"POT-Creation-Date: 2010-08-25 15:16-0500\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,187 +16,172 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: comment-form.php:2 comment-form.php:53 entry.php:30 entry.php:32
-#: functions.php:216 functions.php:454
-msgid "Reply"
+#: 404.php:13
+msgid "Not Found"
 msgstr ""
 
-#: comment-form.php:8
-#, php-format
-msgid "Logged in as <a href=\"%1$s\">%2$s</a>."
+#: 404.php:14 search.php:28
+msgid ""
+"Apologies, but the page you requested could not be found. Perhaps searching "
+"will help."
 msgstr ""
 
-#: comment-form.php:10
-msgid "Log out of this account"
-msgstr ""
-
-#: comment-form.php:11
-msgid "Log out &rarr;"
-msgstr ""
-
-#: comment-form.php:19
-#, php-format
-msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr ""
-
-#: comment-form.php:35
-msgid "Name <em>(required)</em>"
-msgstr ""
-
-#: comment-form.php:39
-msgid "Email <em>(required)</em>"
-msgstr ""
-
-#: comment-form.php:43
-msgid "Web Site"
-msgstr ""
-
-#: comment-form.php:57 inc/js.php:36 post-form.php:76
-msgid "Loading..."
-msgstr ""
-
-#: entry.php:7 entry.php:18
+#: entry.php:13 entry.php:24
 #, php-format
 msgid "Posts by %s"
 msgstr ""
 
-#: entry.php:29 functions.php:136 functions.php:224
+#: entry.php:35 functions.php:147 functions.php:265
 msgid "Permalink"
 msgstr ""
 
-#: entry.php:36 functions.php:136 functions.php:220
+#: entry.php:37 entry.php:41 entry.php:105 entry.php:113 functions.php:257
+#: functions.php:500
+msgid "Reply"
+msgstr ""
+
+#: entry.php:45 functions.php:147 functions.php:261
 msgid "Edit"
 msgstr ""
 
-#: entry.php:41
+#: entry.php:50
 msgid "<br />Tags:"
 msgstr ""
 
-#: entry.php:53 entry.php:66 entry.php:72 inc/template-tags.php:134
+#: entry.php:62 entry.php:75 entry.php:81 inc/template-tags.php:141
 msgid "(More ...)"
 msgstr ""
 
-#: entry.php:81
+#: entry.php:90
 msgid "Toggle Comments"
 msgstr ""
 
-#: footer.php:8
+#: entry.php:107
+#, php-format
+msgid "Required fields are marked %s"
+msgstr ""
+
+#: footer.php:14
 #, php-format
 msgid "P2 theme by %s."
 msgstr ""
 
-#: footer.php:16
+#: footer.php:22
 msgid "compose new post"
 msgstr ""
 
-#: footer.php:17
+#: footer.php:23
 msgid "next post/next comment"
 msgstr ""
 
-#: footer.php:18
+#: footer.php:24
 msgid "previous post/previous comment"
 msgstr ""
 
-#: footer.php:19
+#: footer.php:25
 msgid "reply"
 msgstr ""
 
-#: footer.php:20
+#: footer.php:26
 msgid "edit"
 msgstr ""
 
-#: footer.php:21
+#: footer.php:27
 msgid "show/hide comments"
 msgstr ""
 
-#: footer.php:22
+#: footer.php:28
 msgid "go to top"
 msgstr ""
 
-#: footer.php:23
+#: footer.php:29
 msgid "go to login"
 msgstr ""
 
-#: footer.php:24
+#: footer.php:30
 msgid "show/hide help"
 msgstr ""
 
-#: footer.php:25
+#: footer.php:31
 msgid "cancel"
 msgstr ""
 
-#: functions.php:136
+#: functions.php:25
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:147
 msgid "on"
 msgstr ""
 
-#: functions.php:141 functions.php:222
+#: functions.php:152 functions.php:263
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: functions.php:220
+#: functions.php:261
 msgid "Edit comment"
 msgstr ""
 
-#: functions.php:294
+#: functions.php:335
 msgid "Video Post"
 msgstr ""
 
-#: functions.php:296
+#: functions.php:337
 msgid "Image Post"
 msgstr ""
 
-#: functions.php:455
+#: functions.php:501
 msgid "Log in to Reply"
 msgstr ""
 
-#: functions.php:498
+#: functions.php:545
 #, php-format
 msgid "<strong>%1$s</strong> is proudly powered by %2$s."
 msgstr ""
 
-#: functions.php:503
-msgid "Blog at WordPress.com"
-msgstr ""
-
-#: inc/ajax.php:20 inc/ajax.php:53 inc/ajax.php:64 inc/ajax.php:105
-#: inc/ajax.php:134
+#: inc/ajax.php:21 inc/ajax.php:54 inc/ajax.php:65 inc/ajax.php:106
+#: inc/ajax.php:135
 msgid "Error: not logged in."
 msgstr ""
 
-#: inc/ajax.php:25 inc/ajax.php:71
+#: inc/ajax.php:26 inc/ajax.php:72
 msgid "Error: not allowed to edit post."
 msgstr ""
 
-#: inc/ajax.php:113
+#: inc/ajax.php:114
 msgid "Error: not allowed to edit this comment."
 msgstr ""
 
-#: inc/ajax.php:139
+#: inc/ajax.php:140
 msgid "Error: not allowed to post."
 msgstr ""
 
-#: inc/ajax.php:146 inc/js.php:28 post-form.php:68 post-form.php:69
-#: post-form.php:70
+#: inc/ajax.php:150 inc/js.php:28 post-form.php:72 post-form.php:73
+#: post-form.php:74
 msgid "Tag it"
 msgstr ""
 
-#: inc/ajax.php:230
+#: inc/ajax.php:153 post-form.php:15 post-form.php:53 post-form.php:54
+msgid "Post Title"
+msgstr ""
+
+#: inc/ajax.php:238
 msgid "Error: you must be logged in to post a comment."
 msgstr ""
 
-#: inc/ajax.php:241
+#: inc/ajax.php:249
 msgid "Error: please fill the required fields (name, email)."
 msgstr ""
 
-#: inc/ajax.php:243
+#: inc/ajax.php:251
 msgid "Error: please enter a valid email address."
 msgstr ""
 
-#: inc/ajax.php:247
+#: inc/ajax.php:255
 msgid "Error: Please type a comment."
 msgstr ""
 
-#: inc/ajax.php:261
+#: inc/ajax.php:269
 msgid "Error: Unknown error occurred. Comment not posted."
 msgstr ""
 
@@ -226,6 +211,10 @@ msgstr ""
 msgid "Your update has been posted"
 msgstr ""
 
+#: inc/js.php:36 post-form.php:80
+msgid "Loading..."
+msgstr ""
+
 #: inc/js.php:37
 msgid "Cancel"
 msgstr ""
@@ -234,7 +223,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: inc/js.php:39 single.php:12
+#: inc/js.php:39 single.php:18
 msgid "Hide threads"
 msgstr ""
 
@@ -246,142 +235,146 @@ msgstr ""
 msgid "Your comments or posts will be lost if you continue."
 msgstr ""
 
-#: inc/js.php:42 inc/template-tags.php:253
+#: inc/js.php:42 inc/template-tags.php:270
 #, php-format
 msgid "%1$s <em>on</em> %2$s"
 msgstr ""
 
-#: inc/options-page.php:19 inc/options-page.php:76
-msgid "P2 Options"
+#: inc/options-page.php:19
+msgid "Theme Options"
 msgstr ""
 
-#: inc/options-page.php:49 inc/options-page.php:154
+#: inc/options-page.php:55 inc/options-page.php:166
 msgid "Whatcha' up to?"
 msgstr ""
 
-#: inc/options-page.php:70
+#: inc/options-page.php:82
 msgid "Options saved."
 msgstr ""
 
-#: inc/options-page.php:81
+#: inc/options-page.php:88
+msgid "P2 Options"
+msgstr ""
+
+#: inc/options-page.php:93
 msgid "Functionality Options"
 msgstr ""
 
-#: inc/options-page.php:89
+#: inc/options-page.php:101
 msgid "Posting Access:"
 msgstr ""
 
-#: inc/options-page.php:105
+#: inc/options-page.php:117
 msgid "Hide Threads:"
 msgstr ""
 
-#: inc/options-page.php:109
+#: inc/options-page.php:121
 msgid "Hide comment threads by default"
 msgstr ""
 
-#: inc/options-page.php:120
+#: inc/options-page.php:132
 msgid "Design Options"
 msgstr ""
 
-#: inc/options-page.php:126
+#: inc/options-page.php:138
 msgid "Custom Background Color:"
 msgstr ""
 
-#: inc/options-page.php:128
+#: inc/options-page.php:140
 msgid "Pick a Color"
 msgstr ""
 
-#: inc/options-page.php:134
+#: inc/options-page.php:146
 msgid "Background Image:"
 msgstr ""
 
-#: inc/options-page.php:136
+#: inc/options-page.php:148
 msgid "None"
 msgstr ""
 
-#: inc/options-page.php:137
+#: inc/options-page.php:149
 msgid "Bubbles"
 msgstr ""
 
-#: inc/options-page.php:138
+#: inc/options-page.php:150
 msgid "Polka Dots"
 msgstr ""
 
-#: inc/options-page.php:139
+#: inc/options-page.php:151
 msgid "Squares"
 msgstr ""
 
-#: inc/options-page.php:140
+#: inc/options-page.php:152
 msgid "Plaid"
 msgstr ""
 
-#: inc/options-page.php:141
+#: inc/options-page.php:153
 msgid "Stripes"
 msgstr ""
 
-#: inc/options-page.php:145
+#: inc/options-page.php:157
 msgid "Sidebar display:"
 msgstr ""
 
-#: inc/options-page.php:148
+#: inc/options-page.php:160
 msgid "Hide the Sidebar"
 msgstr ""
 
-#: inc/options-page.php:152
+#: inc/options-page.php:164
 msgid "Post prompt:"
 msgstr ""
 
-#: inc/options-page.php:155
+#: inc/options-page.php:167
 msgid "if empty, defaults to <strong>Whatcha up to?</strong>"
 msgstr ""
 
-#: inc/options-page.php:159
+#: inc/options-page.php:171
 msgid "Post Titles:"
 msgstr ""
 
-#: inc/options-page.php:162
+#: inc/options-page.php:174
 msgid "Display titles"
 msgstr ""
 
-#: inc/options-page.php:172
+#: inc/options-page.php:184
 msgid "Update Options"
 msgstr ""
 
-#: inc/options-page.php:227
+#: inc/options-page.php:239
 msgid "Hide Text"
 msgstr ""
 
-#: inc/options-page.php:233
+#: inc/options-page.php:245
 msgid "Show Text"
 msgstr ""
 
-#: inc/template-tags.php:97
+#: inc/template-tags.php:104
 msgid ", and "
 msgstr ""
 
-#: inc/template-tags.php:117
+#: inc/template-tags.php:124
 #, php-format
 msgid " and %s others are discussing."
 msgstr ""
 
-#: inc/template-tags.php:119
+#: inc/template-tags.php:126
 msgid " and one other person are discussing."
 msgstr ""
 
-#: inc/template-tags.php:122
+#: inc/template-tags.php:129
 msgid " is discussing."
 msgstr ""
 
-#: inc/template-tags.php:124
+#: inc/template-tags.php:131
 msgid " are discussing."
 msgstr ""
 
-#: inc/template-tags.php:166
+#: inc/template-tags.php:174
 #, php-format
 msgid "Hi, %s. %s"
 msgstr ""
 
-#: inc/template-tags.php:166
+#: inc/template-tags.php:174
 msgid "Whatcha up to?"
 msgstr ""
 
@@ -442,105 +435,108 @@ msgstr ""
 msgid "All Updates RSS"
 msgstr ""
 
-#: index.php:11
+#: index.php:17
 msgid "Recent Updates"
 msgstr ""
 
-#: index.php:11
+#: index.php:17
 #, php-format
 msgid "Page %s"
 msgstr ""
 
-#: index.php:16
+#: index.php:22
 #, php-format
-msgid "Updates from %s|name"
+msgctxt "Author name"
+msgid "Updates from %s"
 msgstr ""
 
-#: index.php:21
+#: index.php:27
 #, php-format
-msgid "Posts Mentioning %s|name"
+msgctxt "Author name"
+msgid "Posts Mentioning %s"
 msgstr ""
 
-#: index.php:26
+#: index.php:32
 #, php-format
-msgid "Updates from %s|month"
+msgctxt "Month name"
+msgid "Updates from %s"
 msgstr ""
 
-#: index.php:31
+#: index.php:37
 msgid "Toggle Comment Threads"
 msgstr ""
 
-#: index.php:31 single.php:14
+#: index.php:37 single.php:20
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: index.php:45 single.php:27
+#: index.php:51 single.php:33
 msgid "No posts yet!"
 msgstr ""
 
-#: index.php:52 search.php:27 tag.php:28
-msgid "&larr;&nbsp;Newer&nbsp;Posts"
+#: index.php:58 search.php:35 tag.php:34
+msgid "&larr; Older posts"
 msgstr ""
 
-#: index.php:52 search.php:27 tag.php:28
-msgid "Older&nbsp;Posts&nbsp;&rarr;"
+#: index.php:59 search.php:36 tag.php:35
+msgid "Newer posts &rarr;</span>"
 msgstr ""
 
-#: post-form.php:3 post-form.php:10 post-form.php:49 post-form.php:50
-msgid "Post Title"
-msgstr ""
-
-#: post-form.php:28
+#: post-form.php:32
 msgid "Status Update"
 msgstr ""
 
-#: post-form.php:29
+#: post-form.php:33
 msgid "Blog Post"
 msgstr ""
 
-#: post-form.php:30
+#: post-form.php:34
 msgid "Quote"
 msgstr ""
 
-#: post-form.php:31
+#: post-form.php:35
 msgid "Link"
 msgstr ""
 
-#: post-form.php:59 post-form.php:61 post-form.php:62 post-form.php:63
+#: post-form.php:63 post-form.php:65 post-form.php:66 post-form.php:67
 msgid "Citation"
 msgstr ""
 
-#: post-form.php:71
+#: post-form.php:75
 msgid "Post it"
 msgstr ""
 
-#: search.php:6
+#: search.php:12
 #, php-format
 msgid "Search Results for: %s"
 msgstr ""
 
-#: search.php:21 tag.php:22
+#: search.php:27 tag.php:28
 msgid "No posts found!"
 msgstr ""
 
-#: single.php:34
-msgid "&larr;&nbsp;Older&nbsp;Posts"
+#: single.php:40
+msgid "&larr;"
 msgstr ""
 
-#: single.php:34
-msgid "Newer&nbsp;Posts&nbsp;&rarr;"
+#: single.php:41
+msgid "&rarr;"
 msgstr ""
 
-#: tag.php:7
+#: tag.php:13
 #, php-format
 msgid "Tagged: %s"
 msgstr ""
 
-#. Theme Name of an extension
+#. Theme Name of the plugin/theme
 msgid "P2"
 msgstr ""
 
-#. Description of an extension
+#. Theme URI of the plugin/theme
+msgid "http://p2theme.com/"
+msgstr ""
+
+#. Description of the plugin/theme
 msgid ""
 "A group blog theme for short update messages, inspired by Twitter. "
 "Featuring: Hassle-free posting from the front page. Perfect for group "
@@ -549,18 +545,18 @@ msgid ""
 "suggestion based on previously used tags. A show/hide feature for comments, "
 "to keep things tidy. Real-time notifications when a new comment or update is "
 "posted. Super-handy keyboard shortcuts. Helvetica Neue for you modern font "
-"lovers. And more to come..."
+"lovers."
 msgstr ""
 
-#. Author of an extension
-msgid "Joseph Scott, Matt Thomas, Noel Jackson, and Automattic"
+#. Author of the plugin/theme
+msgid "Automattic"
 msgstr ""
 
-#. Author URI of an extension
+#. Author URI of the plugin/theme
 msgid "http://automattic.com/"
 msgstr ""
 
-#. Tags of an extension
+#. Tags of the plugin/theme
 msgid ""
 "blue, two-columns, fixed-width, rtl-language-support, right-sidebar, white, "
 "light, front-page-post-form"

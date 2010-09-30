@@ -1,28 +1,29 @@
 <?php
-define('DOING_AJAX', true);
-@header('Content-Type: text/html; charset=' . get_option('blog_charset'));
+if ( !defined( 'DOING_AJAX' ) )
+	define( 'DOING_AJAX', true);
+@header( 'Content-Type: text/html; charset=' . get_option( 'blog_charset' ));
 
 class P2Ajax {
 	function dispatch() {
 		$action = isset( $_REQUEST['action'] )? $_REQUEST['action'] : '';
-		add_action('wp_ajax_'.$action, $action );
+		add_action( 'wp_ajax_'.$action, $action );
 		do_action( "p2_ajax", $action );
-		if ( is_callable( array('P2Ajax', $action ) ) )
-			call_user_func( array('P2Ajax', $action ) );
+		if ( is_callable( array( 'P2Ajax', $action ) ) )
+			call_user_func( array( 'P2Ajax', $action ) );
 		else
-			die('-1');
+			die( '-1' );
 		exit;
 	}
 	
 	function get_post() {
 		check_ajax_referer( 'ajaxnonce', '_inline_edit' );
 		if ( !is_user_logged_in() ) {
-			die('<p>'.__('Error: not logged in.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not logged in.', 'p2' ).'</p>' );
 		}
 		$post_id = $_GET['post_ID'];
 		$post_id = substr( $post_id, strpos( $post_id, '-' ) + 1 );
 		if ( !current_user_can( 'edit_post', $post_id ) ) {
-			die('<p>'.__('Error: not allowed to edit post.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not allowed to edit post.', 'p2' ).'</p>' );
 		}
 		$post = get_post( $post_id );
 		echo $post->post_content ;
@@ -38,7 +39,7 @@ class P2Ajax {
 		$term = trim( $term );
 		if ( strlen( $term ) < 2 )
 			die(); // require 2 chars for matching
-		$results = $wpdb->get_col( "SELECT t.name FROM $wpdb->term_taxonomy AS tt INNER JOIN $wpdb->terms AS t ON tt.term_id = t.term_id WHERE tt.taxonomy = 'post_tag' AND t.name LIKE ('%". like_escape( $wpdb->escape( $term ) ) . "%')" );
+		$results = $wpdb->get_col( "SELECT t.name FROM $wpdb->term_taxonomy AS tt INNER JOIN $wpdb->terms AS t ON tt.term_id = t.term_id WHERE tt.taxonomy = 'post_tag' AND t.name LIKE ( '%". like_escape( $wpdb->escape( $term ) ) . "%' )" );
 		echo join( $results, "\n" );
 	}
 
@@ -50,7 +51,7 @@ class P2Ajax {
 	function get_comment() {
 		check_ajax_referer( 'ajaxnonce', '_inline_edit' );
 		if ( !is_user_logged_in() ) {
-			die('<p>'.__('Error: not logged in.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not logged in.', 'p2' ).'</p>' );
 		}
 		$comment_id = esc_attr($_GET['comment_ID']);
 		$comment_id = substr( $comment_id, strpos( $comment_id, '-' ) + 1);
@@ -61,14 +62,14 @@ class P2Ajax {
 	function save_post() {
 		check_ajax_referer( 'ajaxnonce', '_inline_edit' );
 		if ( !is_user_logged_in() ) {
-			die('<p>'.__('Error: not logged in.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not logged in.', 'p2' ).'</p>' );
 		}
 
 		$post_id = $_POST['post_ID'];
 		$post_id = substr( $post_id, strpos( $post_id, '-' ) + 1 );
 
 		if ( !current_user_can( 'edit_post', $post_id )) {
-			die('<p>'.__('Error: not allowed to edit post.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not allowed to edit post.', 'p2' ).'</p>' );
 		}
 
 		$new_post_content	= $_POST['content'];
@@ -76,11 +77,11 @@ class P2Ajax {
 		// preserve custom "big" titles
 		$post = get_post( $post_id );
 		
-		if ( !$post ) die('-1');
+		if ( !$post ) die( '-1' );
 
 		$clean_title = str_replace( '&hellip;', '', $post->post_title );
 
-		if( strpos($post->post_content, $clean_title ) !== 0 ) {
+		if ( strpos($post->post_content, $clean_title ) !== 0 ) {
 			$post_title = $post->post_title;
 		} else {
 			$post_title = prologue_title_from_content( $new_post_content );
@@ -89,8 +90,8 @@ class P2Ajax {
 		$post = wp_update_post( array(
 			'post_title'	=> $post_title,
 			'post_content'	=> $new_post_content,
-			'post_modified'	=> current_time('mysql'),
-			'post_modified_gmt'	=> current_time('mysql', 1),
+			'post_modified'	=> current_time( 'mysql' ),
+			'post_modified_gmt'	=> current_time( 'mysql', 1),
 			'ID' => $post_id
 		));
 		
@@ -102,7 +103,7 @@ class P2Ajax {
 	function save_comment() {
 		check_ajax_referer( 'ajaxnonce', '_inline_edit' );
 		if ( !is_user_logged_in() ) {
-			die('<p>'.__('Error: not logged in.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not logged in.', 'p2' ).'</p>' );
 		}
 
 		$comment_id	= $_POST['comment_ID'];
@@ -110,7 +111,7 @@ class P2Ajax {
 		$comment = get_comment( $comment_id );
 
 		if ( !current_user_can( 'edit_post', $comment->comment_post_ID ) ) {
-			die('<p>'.__('Error: not allowed to edit this comment.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not allowed to edit this comment.', 'p2' ).'</p>' );
 		}
 
 		$comment_content = $_POST['comment_content'];
@@ -127,16 +128,16 @@ class P2Ajax {
 	function new_post() {
 		global $user_ID; 
 		
-		if( 'POST' != $_SERVER['REQUEST_METHOD'] || empty( $_POST['action'] ) || $_POST['action'] != 'new_post' ) {
-		    die('-1');
+		if ( 'POST' != $_SERVER['REQUEST_METHOD'] || empty( $_POST['action'] ) || $_POST['action'] != 'new_post' ) {
+		    die( '-1' );
 		}
 		if ( !is_user_logged_in() ) {
-			die('<p>'.__('Error: not logged in.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not logged in.', 'p2' ).'</p>' );
 		}
-		if( ! ( current_user_can( 'publish_posts' ) || 
+		if ( ! ( current_user_can( 'publish_posts' ) || 
 		        (get_option( 'p2_allow_users_publish' ) && $user_ID )) ) {
 		        	
-			die('<p>'.__('Error: not allowed to post.', 'p2').'</p>');
+			die( '<p>'.__( 'Error: not allowed to post.', 'p2' ).'</p>' );
 		}
 		check_ajax_referer( 'ajaxnonce', '_ajax_post' );
 		$user = wp_get_current_user();
@@ -146,10 +147,10 @@ class P2Ajax {
 		$title = $_POST['post_title'];
 
 		// Strip placeholder text for tags
-		if ( __('Tag it', 'p2') == $tags )
+		if ( __( 'Tag it', 'p2' ) == $tags )
 			$tags = '';
 
-		if ( empty( $title ) || __('Post Title', 'p2') == $title )
+		if ( empty( $title ) || __( 'Post Title', 'p2' ) == $title )
 			// For empty or placeholder text, create a nice title based on content
 	    	$post_title = prologue_title_from_content( $post_content );
 		else
@@ -191,7 +192,7 @@ class P2Ajax {
 		$num_posts = 10; // max amount of posts to load
 		$number_of_new_posts = 0;
 		
-		query_posts('showposts=' . $num_posts . '&post_status=publish');
+		query_posts( 'showposts=' . $num_posts . '&post_status=publish' );
 		ob_start();
 		while (have_posts()) : the_post();
 		    $current_user_id = get_the_author_meta( 'ID' );
@@ -207,7 +208,7 @@ class P2Ajax {
 	    	echo json_encode( array(
 				'numberofnewposts' => $number_of_new_posts,
 				'html' => $posts_html,
-				'lastposttime' => gmdate('Y-m-d H:i:s')
+				'lastposttime' => gmdate( 'Y-m-d H:i:s' )
 			) );
 		} else {
 			header("HTTP/1.1 304 Not Modified");
@@ -215,7 +216,7 @@ class P2Ajax {
 	}
 	
 	function new_comment() {
-		if( 'POST' != $_SERVER['REQUEST_METHOD'] || empty( $_POST['action'] ) || $_POST['action'] != 'new_comment' )
+		if ( 'POST' != $_SERVER['REQUEST_METHOD'] || empty( $_POST['action'] ) || $_POST['action'] != 'new_comment' )
 		    die();
 						
 		check_ajax_referer( 'ajaxnonce', '_ajax_post' );
@@ -233,8 +234,8 @@ class P2Ajax {
 			$comment_author_url   = $user->user_url;
 			$user_ID 			  = $user->ID;
 		} else {
-			if ( get_option('comment_registration') ) {
-			    die('<p>'.__('Error: you must be logged in to post a comment.', 'p2').'</p>');
+			if ( get_option( 'comment_registration' ) ) {
+			    die( '<p>'.__( 'Error: you must be logged in to post a comment.', 'p2' ).'</p>' );
 			}
 			$comment_author       = ( isset($_POST['author']) )  ? trim(strip_tags($_POST['author'])) : null;
 			$comment_author_email = ( isset($_POST['email']) )   ? trim($_POST['email']) : null;
@@ -245,13 +246,13 @@ class P2Ajax {
 
 		if ( get_option( 'require_name_email' ) && !$user->ID )
 			if ( strlen( $comment_author_email ) < 6 || '' == $comment_author ) {
-				die('<p>'.__('Error: please fill the required fields (name, email).', 'p2').'</p>');
+				die( '<p>'.__( 'Error: please fill the required fields (name, email).', 'p2' ).'</p>' );
 			} elseif ( !is_email( $comment_author_email ) ) {
-			    die('<p>'.__('Error: please enter a valid email address.', 'p2').'</p>');
+			    die( '<p>'.__( 'Error: please enter a valid email address.', 'p2' ).'</p>' );
 			}
 
 		if ( '' == $comment_content )
-		    die('<p>'.__('Error: Please type a comment.', 'p2').'</p>');
+		    die( '<p>'.__( 'Error: Please type a comment.', 'p2' ).'</p>' );
 
 		$comment_parent = isset( $_POST['comment_parent'] ) ? absint( $_POST['comment_parent'] ) : 0;
 
@@ -260,12 +261,12 @@ class P2Ajax {
 		$comment_id = wp_new_comment( $commentdata );
 		$comment = get_comment( $comment_id );
 		if ( !$user->ID ) {
-			setcookie('comment_author_' . COOKIEHASH, $comment->comment_author, time() + 30000000, COOKIEPATH, COOKIE_DOMAIN);
-			setcookie('comment_author_email_' . COOKIEHASH, $comment->comment_author_email, time() + 30000000, COOKIEPATH, COOKIE_DOMAIN);
-			setcookie('comment_author_url_' . COOKIEHASH, esc_url($comment->comment_author_url), time() + 30000000, COOKIEPATH, COOKIE_DOMAIN);
+			setcookie( 'comment_author_' . COOKIEHASH, $comment->comment_author, time() + 30000000, COOKIEPATH, COOKIE_DOMAIN);
+			setcookie( 'comment_author_email_' . COOKIEHASH, $comment->comment_author_email, time() + 30000000, COOKIEPATH, COOKIE_DOMAIN);
+			setcookie( 'comment_author_url_' . COOKIEHASH, esc_url($comment->comment_author_url), time() + 30000000, COOKIEPATH, COOKIE_DOMAIN);
 		}
 		if ($comment) echo $comment_id;
-		else echo __("Error: Unknown error occurred. Comment not posted.", 'p2');
+		else echo __("Error: Unknown error occurred. Comment not posted.", 'p2' );
 	}
 	
 	function get_latest_comments() {
@@ -276,8 +277,8 @@ class P2Ajax {
 		$lc_widget = $_GET['lcwidget'];
 		$visible_posts =  isset($_GET['vp'])? (array)$_GET['vp'] : array();
 
-		if ( get_option('thread_comments') )
-			$max_depth = get_option('thread_comments_depth');
+		if ( get_option( 'thread_comments' ) )
+			$max_depth = get_option( 'thread_comments_depth' );
 		else
 			$max_depth = -1;
 
@@ -301,7 +302,7 @@ class P2Ajax {
 				// Setup comment html if post is visible
 				$comment_html = '';
 				if ( in_array( $comment->comment_post_ID, $visible_posts ) )
-					$comment_html = p2_comments($comment, array('max_depth' => $max_depth, 'before' => ' | '), $depth, false);
+					$comment_html = p2_comments($comment, array( 'max_depth' => $max_depth, 'before' => ' | ' ), $depth, false);
 
 				// Setup widget html if widget is visible
 				$comment_widget_html = '';
@@ -311,7 +312,7 @@ class P2Ajax {
 				$prepare_comments[] = array( "id" => $comment->comment_ID, "postID" => $comment->comment_post_ID, "commentParent" =>  $comment->comment_parent,
 					"html" => $comment_html, "widgetHtml" => $comment_widget_html );
 			}
-			$json_data = array("numberofnewcomments" => $number_of_new_comments, "comments" => $prepare_comments, "lastcommenttime" => gmdate('Y-m-d H:i:s') );
+			$json_data = array("numberofnewcomments" => $number_of_new_comments, "comments" => $prepare_comments, "lastcommenttime" => gmdate( 'Y-m-d H:i:s' ) );
 
 			echo json_encode( $json_data );
 		} else { // No new comments

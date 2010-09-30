@@ -4,35 +4,36 @@ jQuery(function($) {
 
 	edCanvas = document.getElementById('posttext');
 	jQuery('#comment-submit').live( 'click', function() {
-		if(loggedin == true) window.onbeforeunload = null;
+		if (loggedin == true)
+			window.onbeforeunload = null;
 	});
 
-	if(isUserLoggedIn) {
-	// Checks if you are loggedin and try to input data (To fix for ONLY private posts.)
+	if (isUserLoggedIn) {
+		// Checks if you are logged in and try to input data (To fix for ONLY private posts.)
 		jQuery('.inputarea, #comment, .comment-reply-link, #comment-submit').click(function() {
 			jQuery.ajax({
 				type: "POST",
 				url: ajaxUrl +'&action=logged_in_out&_loggedin=' + nonce,
-				success: function(result) {
-						if(result != 'logged_in') {
-							newNotification('Please login again.');
-							window.location = login_url;
-						} else {
-							loggedin = true;
-						}
-				  }
+				success: function(result) {			
+					if (result != 'logged_in') {
+						newNotification('Please login again.');
+						window.location = login_url;
+					} else {
+						loggedin = true;
+					}
+				}
 			});
 		});
 	}
 
-	window.onbeforeunload = function ( e ) {
-	if( jQuery('#posttext').val() || jQuery('#comment').val()) {
-  		var e = e || window.event;
-  		if ( e ) {   // For IE and Firefox
-    		e.returnValue = p2txt.unsaved_changes;
-  		}
-  		return p2txt.unsaved_changes;   // For Safari
-	}
+	window.onbeforeunload = function (e) {
+		if (jQuery('#posttext').val() || jQuery('#comment').val()) {
+	  		var e = e || window.event;
+	  		if (e) { // For IE and Firefox
+	    		e.returnValue = p2txt.unsaved_changes;
+	  		}
+	  		return p2txt.unsaved_changes;   // For Safari
+		}
 	};
 
 	/*
@@ -277,7 +278,9 @@ jQuery(function($) {
 			return false;
 		}
 
-		toggleUpdates('unewcomments');
+		if (!isPage)
+			toggleUpdates('unewcomments');
+
 		if (typeof ajaxCheckComments != "undefined")
 			ajaxCheckComments.abort();
 
@@ -304,7 +307,7 @@ jQuery(function($) {
 			url: ajaxUrl,
 			data: dataString,
 			success: function(result) {
-				$('#respond .progress').hide();
+				submitProgress.fadeOut();
 				$("#respond").slideUp( 200, function() {
 					var lastComment = $("#respond").prev("li");
 					if (isNaN(result) || 0 == result || 1 == result)
@@ -314,12 +317,11 @@ jQuery(function($) {
 						newNotification(errorMessage);
 					getComments(false);
 
-					submitProgress.fadeOut( 200, function() {
+					if (!isPage)
 						toggleUpdates('unewcomments');
 
-						thisFormElements.attr('disabled', false);
-						thisFormElements.removeClass('disabled');
-					});
+					thisFormElements.attr('disabled', false);
+					thisFormElements.removeClass('disabled');
 				});
 
 			  }
@@ -430,14 +432,28 @@ jQuery(function($) {
 		if (window.fluid) window.fluid.dockBadge = value;
 	}
 
-	function autgrow(textarea, min) {
-		var linebreaks = textarea.value.match(/\n/g);
-		if (linebreaks != null && linebreaks.length+1 >= min) {
-			textarea.rows = (linebreaks.length+1);
+	/**
+	 * Sets up a jQuery-collection of textareas to expand vertically based
+	 * on their content.
+	 */
+	function autgrow(textareas, min) {
+		function sizeToContent(textarea) {
+			textarea.style.height = min + 'em';
+			if (textarea.scrollHeight > textarea.clientHeight) {
+				textarea.style.height = textarea.scrollHeight + 'px';
+			}
 		}
-		else {
-			textarea.rows =  min;
+		textareas.css('overflow', 'hidden');
+
+		function resizeSoon(e) {
+			var textarea = this;
+			setTimeout(function() {
+				sizeToContent(textarea);
+			}, 1);
 		}
+		textareas.keydown(resizeSoon); // Catch regular character keys
+		textareas.keypress(resizeSoon); // Catch enter/backspace in IE, and held-down repeated keys
+		textareas.focus(resizeSoon);
 	}
 
 	function jumpToTop() {
@@ -536,8 +552,12 @@ jQuery(function($) {
 	});
 
 	$(".show_comments").click(function(){
-		var id = $(this).attr('id');
-		$( '#' + id + ' ul.commentlist' ).toggle();
+		var commentList = $(this).closest('.post').find('.commentlist');
+		if (commentList.css('display') == 'none') {
+			commentList.show();
+		} else {
+			commentList.hide();
+		}
 		return false;
 	});
 
@@ -565,8 +585,7 @@ jQuery(function($) {
 		        return(textarea);
 		    },
 		    plugin : function(settings, original) {
-		        $('textarea', this).keypress(function(e) {autgrow(this, 3);});
-		        $('textarea', this).focus(function(e) {autgrow(this, 3);});
+				autgrow($('textarea', this), 3);
 		    }
 		});
 	}
@@ -878,8 +897,7 @@ jQuery(function($) {
 
 	// Actvate autgrow on textareas
 	if (isFrontPage) {
-		$('#posttext, #comment').keypress(function(e) {autgrow(this, 3);});
-		$('#posttext, #comment').focus(function(e) {autgrow(this, 3);});
+		autgrow($('#posttext, #comment'), 4);
 	}
 
 	// Activate tooltips on recent-comments widget
@@ -892,13 +910,12 @@ jQuery(function($) {
 	});
 
 	// Catch new comment submit
-	if (!isPage)
-		$("#commentform").live( 'submit', function(trigger) {
-			newComment(trigger);
-			trigger.preventDefault();
-			$(this).parents("li").removeClass('replying');
-			$(this).parents('#respond').prev("li").removeClass('replying');
-		});
+	$("#commentform").bind( 'submit', function(trigger) {
+		newComment(trigger);
+		trigger.preventDefault();
+		$(this).parents("li").removeClass('replying');
+		$(this).parents('#respond').prev("li").removeClass('replying');
+	});
 
 	// Hide error messages on load
 	$('#posttext_error, #commenttext_error').hide();

@@ -1,18 +1,18 @@
 <?php
 if ( !function_exists( 'returner' ) ) {
 	function returner( $value ) {
-        return create_function( '', 'return '.var_export( $value, true ).';');
+        return create_function( '', 'return '.var_export( $value, true ).';' );
 	}
 }
 
 if ( !function_exists( 'lambda' ) ) {
 function lambda( $args, $expression, $locals = array() ) {
-        $export_call = $locals? 'extract('.var_export( $locals, true ).', EXTR_PREFIX_SAME, "ext");' : '';
+        $export_call = $locals? 'extract( '.var_export( $locals, true ).', EXTR_PREFIX_SAME, "ext");' : '';
         return create_function( $args, $export_call.' return '.$expression.';' );
 }
 }
 
-add_action( 'init', array('P2', 'init') );
+add_action( 'init', array( 'P2', 'init' ) );
 
 class P2 {
 	function init() {
@@ -40,10 +40,10 @@ class P2 {
 		if ( $is_media_upload ) {
 			add_filter( 'flash_uploader', returner( false) );
 			add_filter( 'auth_redirect_scheme', returner( 'logged_in' ) );
-			add_filter( 'admin_url', array('P2', 'url_filter') );
-			add_filter( 'includes_url', array('P2', 'url_filter') );
-			add_filter( 'script_loader_src', array('P2', 'url_filter') );
-			add_filter( 'wp_get_attachment_url', lambda( '$url', 'str_replace(get_bloginfo("url")."/", site_url("/"), $url);'), 11);
+			add_filter( 'admin_url', array( 'P2', 'url_filter' ) );
+			add_filter( 'includes_url', array( 'P2', 'url_filter' ) );
+			add_filter( 'script_loader_src', array( 'P2', 'url_filter' ) );
+			add_filter( 'wp_get_attachment_url', lambda( '$url', 'str_replace(get_bloginfo("url")."/", site_url("/"), $url);' ), 11);
 			add_filter( 'media_upload_form_url', lambda( '$url', 'add_query_arg( array( "p2-upload" => "true" ), $url );' ) );
 		}
 	}
@@ -60,9 +60,9 @@ class P2 {
 	 */
 	function url_filter( $url, $path = '' ) {
 		$parsed = parse_url( $url );
-		$host = $parsed['host'];
-		if(!false === strpos('http', $url) )
-			return preg_replace( '|https?://'.preg_quote( $host ).'|', get_bloginfo('url'), $url );
+		$host = ( isset( $parsed['host'] ) ) ? $parsed['host'] : '';
+		if (!false === strpos( 'http', $url) )
+			return preg_replace( '|https?://'.preg_quote( $host ).'|', get_bloginfo( 'url' ), $url );
 		return $url;
 	}
 

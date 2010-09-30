@@ -1,8 +1,8 @@
 <?php
 // PHP 4 compatiblity
-if ( !function_exists('str_split')):
+if ( !function_exists( 'str_split' )):
 function str_split($string,$string_length=1) {
-	if(strlen($string)>$string_length || !$string_length) {
+	if (strlen($string)>$string_length || !$string_length) {
 		do {
 			$c = strlen($string);
 			$parts[] = substr($string,0,$string_length);
@@ -15,7 +15,7 @@ function str_split($string,$string_length=1) {
 }
 endif;
 
-if( !function_exists('str_ireplace') ) {
+if ( !function_exists( 'str_ireplace' ) ) {
 	function str_ireplace($name, $values, $replacement) {
 		return str_replace($name, $values, $replacement);
 	}
@@ -39,12 +39,12 @@ function get_the_author_meta($field = '', $user_id = false) {
 	else
 		$value = isset($authordata->$field) ? $authordata->$field : '';
 
-	return apply_filters('get_the_author_' . $field, $value);
+	return apply_filters( 'get_the_author_' . $field, $value);
 }
 endif;
 
 if ( !function_exists( 'the_author_meta' ) ):
 function the_author_meta($field = '', $user_id = false) {
-	echo apply_filters('the_author_' . $field, get_the_author_meta($field, $user_id));
+	echo apply_filters( 'the_author_' . $field, get_the_author_meta($field, $user_id));
 }
 endif;
