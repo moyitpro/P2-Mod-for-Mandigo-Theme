@@ -150,6 +150,8 @@ h2 {
 	padding-right: 10px;
 	padding-bottom: 10px;
 	position: relative;
+	max-width: 718px;
+	overflow: hidden;
 }
 .single #p2main {
 	padding-top: 18px;
@@ -186,6 +188,7 @@ position: static;
 #p2main img.avatar {
 	float: left;
 	margin-right: 10px;
+        margin-left: 4px;
 	border: solid;
 	border-width: 1px;
 	margin-top: 0;
@@ -205,9 +208,10 @@ position: static;
 #p2main h4 {
 	position: relative;
 }
-#p2main .actions {
+.actions {
 	position: absolute;
 	right: 2px;
+	margin-right: 4px;
 	top: 0;
 }
 .bottom_of_entry {
@@ -228,7 +232,7 @@ h2 img {
 	border-width: 1px;
 	display: block;
 }
-.postcontent p img {
+#p2main img {
 	width: auto !important; 
 	max-width: 480px !important; 
 	height: auto !important;
@@ -348,7 +352,7 @@ h2 img {
 }
 .commentcontent {
 	overflow: auto;
-	margin-right:  4px;
+	margin-right:  10px;
 }
 .commentlist {
 	margin-bottom: 5px;
@@ -687,6 +691,8 @@ li.newupdates, li.newcomment {
 .postcontent {
 	overflow: visible;
 	padding-left: 60px;
+        margin-right: 10px;
+        margin-left: 4px;
 }
 .page .postcontent {
 padding-left: 0;
@@ -724,6 +730,9 @@ div.entry {
 	height: 85px;
 	margin-bottom: 20px;
 	border-top: 0;
+}
+.discussion {
+        margin-left: 4px;
 }
 .discussion p img {
 	padding: 0 !important;
@@ -1065,7 +1074,7 @@ li.newupdates, li.newcomment {
 	font-weight: normal;
 }
 #p2main p, #p2main ul, #p2main ol {
-	font-size: .95em;
+	font-size: .90em;
 	line-height: 1.4em;
 }
 #respond #cancel-comment-reply-link {
