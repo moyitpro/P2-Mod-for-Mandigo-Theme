@@ -193,6 +193,9 @@ position: static;
 	border-width: 1px;
 	margin-top: 0;
 }
+#p2main ul#postlist {
+	padding: 0 !important;
+}
 #p2main ul#postlist li {
 	overflow: visible;
 	border-top-style: solid;
