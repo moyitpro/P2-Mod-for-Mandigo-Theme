@@ -14,7 +14,7 @@
 		<?php if ( have_posts() ) : ?>
 			
 			<ul id="postlist">
-			<?php while ( have_posts() ) : the_post() ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 				
 				<?php p2_load_entry() // loads entry.php ?>
 			
@@ -22,17 +22,22 @@
 			</ul>
 		
 		<?php else : ?>
-		
+
 			<div class="no-posts">
-			    <h3><?php _e( 'No posts found!', 'p2' ) ?></h3>
+			    <h3><?php _e( 'No posts found!', 'p2' ); ?></h3>
+				<p><?php _e( 'Apologies, but the page you requested could not be found. Perhaps searching will help.', 'p2' ); ?></p>
+				<?php get_search_form(); ?>
 			</div>
 			
 		<?php endif ?>
 		
 		<div class="navigation">
-			<p><?php posts_nav_link( ' | ', __( '&larr;&nbsp;Newer&nbsp;Posts', 'p2' ), __( 'Older&nbsp;Posts&nbsp;&rarr;', 'p2' ) ); ?></p>
-		</div>
-		</div> <!--main-->
+			<p class="nav-older"><?php next_posts_link( __( '&larr; Older posts', 'p2' ) ); ?></p>
+			<p class="nav-newer"><?php previous_posts_link( __( 'Newer posts &rarr;</span>', 'p2' ) ); ?></p>
+		</div>		
+
+	</div> <!-- main -->
+
 </td>
 
 <?php
