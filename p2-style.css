@@ -1,6 +1,6 @@
 /*
 Theme Name: P2
-Version: 1.1.5
+Version: 1.1.6.2
 Author: Automattic
 Author URI: http://p2theme.com/
 Tags: blue, two-columns, fixed-width, rtl-language-support, right-sidebar, white, light, front-page-post-form
@@ -150,7 +150,7 @@ h2 {
 	padding-right: 10px;
 	padding-bottom: 10px;
 	position: relative;
-	max-width: 718px;
+	max-width: 705px;
 	overflow: hidden;
 }
 .single #p2main {

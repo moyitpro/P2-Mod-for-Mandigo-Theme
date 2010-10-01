@@ -1,3 +1,9 @@
+<?php
+/**
+ * @package WordPress
+ * @subpackage P2
+ */
+?>
 	<script type="text/javascript" charset="utf-8">
 		jQuery(document).ready(function($) {
 			jQuery('#post_cat').val($('#post-types a.selectted').attr('id'));
@@ -5,8 +11,8 @@
 				jQuery('.post-input').hide();
 				$('#post-types a').removeClass('selected');
 				jQuery(this).addClass('selected');
-				if($(this).attr('id') == 'post') {
-					jQuery('#posttitle').val("<?php _e('Post Title'); ?>");
+				if ($(this).attr('id') == 'post') {
+					jQuery('#posttitle').val("<?php echo esc_js( __('Post Title', 'p2') ); ?>");
 				} else {
 					jQuery('#posttitle').val('');
 				}
@@ -15,23 +21,22 @@
 				return false;
 			});
 		});
-(function($){$.fn.TextAreaExpander=function(minHeight,maxHeight){var hCheck=!($.browser.msie||$.browser.opera);function ResizeTextarea(e){e=e.target||e;var vlen=e.value.length,ewidth=e.offsetWidth;if(vlen!=e.valLength||ewidth!=e.boxWidth){if(hCheck&&(vlen<e.valLength||ewidth!=e.boxWidth))e.style.height="0px";var h=Math.max(e.expandMin,Math.min(e.scrollHeight,e.expandMax));e.style.overflow=(e.scrollHeight>h?"auto":"hidden");e.style.height=(h - 5)+"px";e.valLength=vlen;e.boxWidth=ewidth}return true};this.each(function(){if(this.nodeName.toLowerCase()!="textarea")return;var p=this.className.match(/expand(\d+)\-*(\d+)*/i);this.expandMin=minHeight||(p?parseInt('0'+p[1],10):0);this.expandMax=maxHeight||(p?parseInt('0'+p[2],10):99999);ResizeTextarea(this);if(!this.Initialized){this.Initialized=true;$(this).css('padding-bottom', 0).css('padding-top', 5);$(this).bind("keyup",ResizeTextarea).bind("focus",ResizeTextarea);}});return this}})(jQuery);
-// initialize all expanding textareas
-jQuery(document).ready(function() {
-	jQuery("textarea[class*=expand]").TextAreaExpander();
-});
 </script>
 
+<?php
+// set default post type
+$post_type = p2_get_posting_type();
+?>
 <div id="postbox">
 		<ul id="post-types">
-			<li><a id="status"<?php if ( $_GET['p'] == 'status' || !isset($_GET['p']) ) : ?> class="selected"<?php endif; ?> href="<?php echo site_url( '?p=status' ) ?>" title="<?php _e( 'Status Update', 'p2' ) ?>"><?php _e( 'Status Update', 'p2' ) ?></a></li>
-			<li><a id="post"<?php if ( $_GET['p'] == 'post' ) : ?> class="selected"<?php endif; ?> href="<?php echo site_url( '?p=post' ) ?>" title="<?php _e( 'Blog Post', 'p2' ) ?>"><?php _e( 'Blog Post', 'p2' ) ?></a></li>
-			<li><a id="quote"<?php if ( $_GET['p'] == 'quote' ) : ?> class="selected"<?php endif; ?> href="<?php echo site_url( '?p=quote' ) ?>" title="<?php _e( 'Quote', 'p2' ) ?>"><?php _e( 'Quote', 'p2' ) ?></a></li>
-			<li><a id="link"<?php if ( $_GET['p'] == 'link' ) : ?> class="selected"<?php endif; ?> href="<?php echo site_url( '?p=link' ) ?>" title="<?php _e( 'Link', 'p2' ) ?>"><?php _e( 'Link', 'p2' ) ?></a></li>
+			<li><a id="status"<?php if ( $post_type == 'status' ) : ?> class="selected"<?php endif; ?> href="<?php echo site_url( '?p=status' ); ?>" title="<?php _e( 'Status Update', 'p2' ); ?>"><?php _e( 'Status Update', 'p2' ); ?></a></li>
+			<li><a id="post"<?php if ( $post_type == 'post' ) : ?> class="selected"<?php endif; ?> href="<?php echo site_url( '?p=post' ); ?>" title="<?php _e( 'Blog Post', 'p2' ); ?>"><?php _e( 'Blog Post', 'p2' ); ?></a></li>
+			<li><a id="quote"<?php if ( $post_type == 'quote' ) : ?> class="selected"<?php endif; ?> href="<?php echo site_url( '?p=quote' ); ?>" title="<?php _e( 'Quote', 'p2' ); ?>"><?php _e( 'Quote', 'p2' ); ?></a></li>
+			<li><a id="link"<?php if ( $post_type == 'link' ) : ?> class="selected"<?php endif; ?> href="<?php echo site_url( '?p=link' ); ?>" title="<?php _e( 'Link', 'p2' ); ?>"><?php _e( 'Link', 'p2' ); ?></a></li>
 		</ul>
 
 		<div class="avatar">
-			<?php p2_user_avatar( 'size=48' ) ?>
+			<?php p2_user_avatar( 'size=48' ); ?>
 		</div>
 
 		<div class="inputarea">
@@ -39,7 +44,7 @@ jQuery(document).ready(function() {
 			<form id="new_post" name="new_post" method="post" action="<?php echo site_url(); ?>/">
 				<?php if ( 'status' == p2_get_posting_type() || '' == p2_get_posting_type() ) : ?>
 				<label for="posttext">
-					<?php p2_user_prompt() ?>
+					<?php p2_user_prompt(); ?>
 				</label>
 				<?php endif; ?>
 
@@ -53,7 +58,7 @@ jQuery(document).ready(function() {
 					<?php echo P2::media_buttons(); ?>
 				</div>
 				<?php endif; ?>
-				<textarea class="expand70-200" name="posttext" id="posttext" tabindex="1" rows="3" cols="60"></textarea>
+				<textarea class="expand70-200" name="posttext" id="posttext" tabindex="1" rows="4" cols="60"></textarea>
 				<div id="postbox-type-quote" class="post-input <?php if ( 'quote' == p2_get_posting_type() ) echo " selected"; ?>">
 					<label for="postcitation" class="invisible"><?php _e( 'Citation', 'p2' ); ?></label>
 						<input id="postcitation" name="postcitation" type="text" tabindex="2"
@@ -69,9 +74,9 @@ jQuery(document).ready(function() {
 						onblur="this.value=(this.value=='') ? '<?php echo esc_js( __( 'Tag it', 'p2' ) ); ?>' : this.value;" />
 					<input id="submit" type="submit" tabindex="3" value="<?php esc_attr_e( 'Post it', 'p2' ); ?>" />
 				</div>
-				<input type="hidden" name="post_cat" id="post_cat" value="<?php echo ( isset( $_GET['p'] ) ) ? esc_attr( $_GET['p'] ) : 'status' ?>" />
+				<input type="hidden" name="post_cat" id="post_cat" value="<?php echo esc_attr( $post_type ); ?>" />
 				<span class="progress" id="ajaxActivity">
-					<img src="<?php echo str_replace( WP_CONTENT_DIR, content_url(), locate_template( array( 'i/indicator.gif' ) ) ) ?>"
+					<img src="<?php echo str_replace( WP_CONTENT_DIR, content_url(), locate_template( array( 'i/indicator.gif' ) ) ); ?>"
 						alt="<?php esc_attr_e( 'Loading...', 'p2' ); ?>" title="<?php esc_attr_e( 'Loading...', 'p2' ); ?>"/>
 				</span>
 				<input type="hidden" name="action" value="post" />
