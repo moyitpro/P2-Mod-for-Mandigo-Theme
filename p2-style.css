@@ -185,6 +185,14 @@ position: static;
 #p2main .post h2 {
 	margin: 0 0 15px;
 }
+#p2main .transparent-title {
+	text-indent: -1000em;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	padding: 0;
+	margin: 0;
+}
 #p2main img.avatar {
 	float: left;
 	margin-right: 10px;
@@ -727,6 +735,14 @@ div.entry {
 }
 .navigation {
 	clear: both;
+}
+.navigation p {
+	float: left;
+	width: 50%;
+}
+.navigation p.nav-newer {
+	float: right;
+	text-align: right;
 }
 .attachment .navigation {
 	width: 691px;

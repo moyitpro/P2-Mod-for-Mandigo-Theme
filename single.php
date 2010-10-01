@@ -8,10 +8,11 @@
 	$tag_page_title        = $mandigo_options['heading_level_page_title'      ];
 ?>
 	<td id="content" class="<?php echo ($mandigo_options['sidebar_always_show'] ? 'narrow' : 'wide'); ?>column"<?php if (mandigo_sidebox_conditions($single = true)) { ?> rowspan="2"<?php } ?>>
-<div id="p2main">
+	<div id="p2main">
+		
 		<?php if ( have_posts() ) : ?>
 			
-			<?php while ( have_posts() ) : the_post() ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 			
 				<div class="singlecontrols">
 					<a href="#" id="togglecomments"><?php _e( 'Hide threads', 'p2' ); ?></a>
@@ -29,17 +30,18 @@
 			
 			<ul id="postlist">
 				<li class="no-posts">
-			    	<h3><?php _e( 'No posts yet!', 'p2' ) ?></h3>
+			    	<h3><?php _e( 'No posts yet!', 'p2' ); ?></h3>
 				</li>
 			</ul>
 			
 		<?php endif; ?>
 
 		<div class="navigation">
-			<p><?php previous_post_link( '%link', __( '&larr;&nbsp;Older&nbsp;Posts', 'p2' ) ) ?> | <?php next_post_link( '%link', __( 'Newer&nbsp;Posts&nbsp;&rarr;', 'p2' ) ) ?></p>
+			<p class="nav-older"><?php previous_post_link( '%link', __( '&larr;', 'Previous post link', 'p2' ) . ' %title' ); ?></p>
+			<p class="nav-newer"><?php next_post_link( '%link', '%title ' . __( '&rarr;', 'Next post link', 'p2' ) ); ?></p>
 		</div>
-
-</div><!-- main -->
+		
+	</div> <!-- main -->
 	</td>
 
 <?php
