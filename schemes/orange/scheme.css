@@ -1,0 +1,22 @@
+a, .posttitle a:hover, .entry p a:visited {
+	color: #FF9B2A;
+}
+
+#wp-calendar a:hover {
+  text-decoration: underline;
+}
+
+.datestamp { 
+	background: #FFD7A6;
+	border: 1px solid #C08800;
+}
+
+.datestamp div {
+	background: #FFBA2C url(images/cal_bg.jpg) repeat-x;
+}
+input[type="button"], input[type="submit"], button {
+	background-color: #FF9B2A;
+}
+input[type="button"]:hover, input[type="submit"]:hover, button:hover {
+	background-color: #FFD7A6;
+}

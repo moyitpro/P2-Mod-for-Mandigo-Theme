@@ -1,0 +1,35 @@
+a, a:hover, .entry p a:visited {
+	color: #206E01;
+}
+
+.posttitle a:hover {
+	color: #3DB306;
+}
+
+.entry p a {
+	border-bottom: 1px dotted #206E01;
+}
+
+.entry p a:hover {
+	border-bottom: 1px solid #206E01;
+	text-decoration: none;
+}
+
+#wp-calendar a {
+	font-weight: bold;
+}
+
+.datestamp { 
+	background: #C1F897;
+	border: 1px solid #3DB306;
+}
+
+.datestamp div {
+	background: #4CB306 url(images/cal_bg.jpg) repeat-x;
+}
+input[type="button"], input[type="submit"], button {
+	background-color: #206E01;
+}
+input[type="button"]:hover, input[type="submit"]:hover, button:hover {
+	background-color: #3DB306;
+}

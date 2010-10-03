@@ -222,7 +222,8 @@
 	else {
 ?>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/p2-style.css" />
+<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/p2-style.css" />
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/p2-buttons.css" />
 <style type="text/css">
 <?php
 	include 'style.css.php';

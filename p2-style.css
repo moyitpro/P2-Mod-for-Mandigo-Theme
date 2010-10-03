@@ -1,6 +1,6 @@
 /*
 Theme Name: P2
-Version: 1.1.6.2
+Version: 1.1.5
 Author: Automattic
 Author URI: http://p2theme.com/
 Tags: blue, two-columns, fixed-width, rtl-language-support, right-sidebar, white, light, front-page-post-form
@@ -103,6 +103,8 @@ form#new_post {
 }
 #postbox input#tags {
 	width: 75%;
+	padding-top: 4px;
+	padding-bottom: 4px;
 	float: left;
 }
 #postbox input#submit {
@@ -1093,7 +1095,7 @@ li.newupdates, li.newcomment {
 	font-weight: normal;
 }
 #p2main p, #p2main ul, #p2main ol {
-	font-size: .90em;
+	font-size: .95em;
 	line-height: 1.4em;
 }
 #respond #cancel-comment-reply-link {

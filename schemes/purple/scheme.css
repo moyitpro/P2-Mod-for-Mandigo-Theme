@@ -1,0 +1,26 @@
+a, .posttitle a:hover, .entry p a:visited {
+	color: #B53492;
+}
+
+a:hover {
+	color: #7F2D66;
+}
+
+#wp-calendar a {
+	font-weight: bold;
+}
+
+.datestamp { 
+	background: #F4ABE9;
+	border: 1px solid #7F2D66;
+}
+
+.datestamp div {
+	background: #B53492 url(images/cal_bg.jpg) repeat-x;
+}
+input[type="button"], input[type="submit"], button {
+	background-color: #B53492;
+}
+input[type="button"]:hover, input[type="submit"]:hover, button:hover {
+	background-color: #7F2D66;
+}

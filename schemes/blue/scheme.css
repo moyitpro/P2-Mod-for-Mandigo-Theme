@@ -1,0 +1,22 @@
+a, .posttitle a:hover, .entry p a:visited {
+	color: #2E8FC6;
+}
+
+a:hover {
+	color: #0F3461;
+}
+
+.datestamp { 
+	background: #A3CFEC;
+	border: 1px solid #0F3461;
+}
+
+.datestamp div {
+	background: #1C5B9E url(images/cal_bg.jpg) repeat-x;
+}
+input[type="button"], input[type="submit"], button {
+	background-color: #2E8FC6;
+}
+input[type="button"]:hover, input[type="submit"]:hover, button:hover {
+	background-color: #0F3461;
+}
