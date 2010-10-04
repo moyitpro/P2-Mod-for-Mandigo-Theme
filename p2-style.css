@@ -1,10 +1,6 @@
 /*
-Theme Name: P2
-Version: 1.1.5
-Author: Automattic
-Author URI: http://p2theme.com/
-Tags: blue, two-columns, fixed-width, rtl-language-support, right-sidebar, white, light, front-page-post-form
-Description: A group blog theme for short update messages, inspired by Twitter. Featuring: Hassle-free posting from the front page. Perfect for group blogging, or as a liveblog theme. Dynamic page updates. Threaded comment display on the front page. In-line editing for posts and comments. Live tag suggestion based on previously used tags. A show/hide feature for comments, to keep things tidy. Real-time notifications when a new comment or update is posted. Super-handy keyboard shortcuts. Helvetica Neue for you modern font lovers. And more to come...
+P2 Support CSS
+Version: 1.1.6.2
 */
 .category-quote blockquote {
 	margin-bottom: 8px;
